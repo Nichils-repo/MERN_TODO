@@ -1,4 +1,10 @@
 import express from "express";
+import {
+  createNote,
+  deleteNote,
+  getAllNotes,
+  updateNote,
+} from "../controllers/notesController.js";
 
 const router = express.Router();
 
@@ -6,28 +12,13 @@ const router = express.Router();
 //essentially, if we make a get request, at /api/notes, it then gets send here
 // and the get method is executed and envoked from here
 
-router.get("/", (req, res) => {
-  res.status(200).send("you fetched the notes");
-});
+router.get("/", getAllNotes);
 
-router.post("/", (req, res) => {
-  res.status(201),
-    json({
-      message: "note created successfully",
-    });
-});
+router.post("/", createNote);
 
-router.put("/:id", (req, res) => {
-  res.status(200).json({
-    message: "note updated successfully",
-  });
-});
+router.put("/:id", updateNote);
 
-router.delete("/:id", (req, res) => {
-  res.status(200).json({
-    message: "note deleted successfully",
-  });
-});
+router.delete("/:id", deleteNote);
 
 export default router;
 
