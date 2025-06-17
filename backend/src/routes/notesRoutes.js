@@ -4,6 +4,7 @@ import {
   deleteNote,
   getAllNotes,
   updateNote,
+  getNoteById,
 } from "../controllers/notesController.js";
 
 const router = express.Router();
@@ -13,6 +14,8 @@ const router = express.Router();
 // and the get method is executed and envoked from here
 
 router.get("/", getAllNotes);
+
+router.get("/:id", getNoteById);
 
 router.post("/", createNote);
 
